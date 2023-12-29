@@ -2,6 +2,6 @@
 {
     public interface IChatBotService
     {
-        string Test(string text);
+        Task<string> Test(string text);
     }
 }

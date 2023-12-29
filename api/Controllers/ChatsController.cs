@@ -8,17 +8,17 @@ namespace api.Controllers
     [ApiController]
     public class ChatsController : ControllerBase
     {
-        private readonly IChatBotService _testService;
+        private readonly IChatBotService _chatBotService;
 
-        public ChatsController(IChatBotService testService)
+        public ChatsController(IChatBotService chatbotService)
         {
-            _testService = testService;
+            _chatBotService = chatbotService;
         }
 
         [HttpGet("{text}")]
-        public IActionResult Test(string text)
+        public async Task<IActionResult> Test(string text)
         {
-            var res = _testService.Test(text);
+            var res = await _chatBotService.Test(text);
             return Ok(res);
         }
     }
